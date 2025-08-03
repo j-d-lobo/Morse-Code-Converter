@@ -1,5 +1,7 @@
-from colorama import Style
-import pandas as pd
+import os
+import sys
+from colorama import Style, Fore
+from banner import banner
 
 MORSE_CODE_DICT = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
@@ -16,17 +18,50 @@ MORSE_CODE_DICT = {
     '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
 }
 
-input_string = input("Enter the text you would like to convert: ") # bingus spoingus
+RunStatus = True
+# ========================================================================================================================
+# MAIN LOOP 
+# ========================================================================================================================
+while(RunStatus):
+    print(f"{Style.BRIGHT + Fore.CYAN}{banner}{Style.RESET_ALL}")
 
-INPUT_STRING = input_string.upper() # Converts the input string to uppercase so we don't run into errors w/ lowercase characters
+    input_string = input(f"Enter the text you would like to convert: {Style.BRIGHT + Fore.GREEN}") # bingus spoingus
 
-output_list = [] # Empty string to hold the output
+    INPUT_STRING = input_string.upper() # Converts the input string to uppercase so we don't run into errors w/ lowercase characters
 
-for char in INPUT_STRING:
-    output_list.append(MORSE_CODE_DICT[char]) # Adds the value of the corresponding key to the output string
-    # ['-...', '..', '-.', '--.', '..-', '...', '/', '...', '.--.', '---', '..', '-.', '--.', '..-', '...'] = bingus spoingus
+    output_list = [] # Empty string to hold the output
 
-delimiter = " "
-output_string = delimiter.join(output_list) # Puts a space between list elements and joins them as a string
+    for char in INPUT_STRING:
+        output_list.append(MORSE_CODE_DICT[char]) # Adds the value of the corresponding key to the output string
+        # ['-...', '..', '-.', '--.', '..-', '...', '/', '...', '.--.', '---', '..', '-.', '--.', '..-', '...'] = bingus spoingus
 
-print(output_string) # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
+    delimiter = " "
+    output_string = delimiter.join(output_list) # Puts a space between list elements and joins them as a string
+
+    print(f"{Style.RESET_ALL}--> {Style.BRIGHT + Fore.GREEN}{output_string}{Style.RESET_ALL}") # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
+
+    # ====================================================================================================================
+    # CONTINUE CHECK LOOP 
+    # ====================================================================================================================
+    ContinueCheck = True
+    while(ContinueCheck):
+        action = input(f"Would you like to continue? (Y/N): {Style.BRIGHT + Fore.RED}")
+
+        ACTION = action.upper()
+        if ACTION == "Y":
+            ContinueCheck = False # Exits the Continue Check loop
+            os.system("cls") # Clears Command Prompt
+            break
+        elif ACTION == "N": 
+            ContinueCheck = False # Exits the Continue Check loop
+            RunStatus = False # Sets the RunStatus variable to False making it so the main loop doesn't run again
+            break
+        else: 
+            print(f"{Style.RESET_ALL}Invalid Input!")
+    # ====================================================================================================================
+    # END OF CONTINUE CHECK LOOP
+    # ====================================================================================================================
+
+# ========================================================================================================================
+# END OF MAIN LOOP
+# ========================================================================================================================
