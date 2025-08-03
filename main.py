@@ -27,6 +27,6 @@ for char in INPUT_STRING:
     # ['-...', '..', '-.', '--.', '..-', '...', '/', '...', '.--.', '---', '..', '-.', '--.', '..-', '...'] = bingus spoingus
 
 delimiter = " "
-output_string = delimiter.join(output_list)
+output_string = delimiter.join(output_list) # Puts a space between list elements and joins them as a string
 
 print(output_string) # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
