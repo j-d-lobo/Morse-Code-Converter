@@ -16,13 +16,17 @@ MORSE_CODE_DICT = {
     '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
 }
 
-input_string = input("Enter the text you would like to convert: ")
+input_string = input("Enter the text you would like to convert: ") # bingus spoingus
 
-INPUT_STRING = input_string.upper()
+INPUT_STRING = input_string.upper() # Converts the input string to uppercase so we don't run into errors w/ lowercase characters
 
-output_string = []
+output_list = [] # Empty string to hold the output
 
 for char in INPUT_STRING:
-    output_string.append(MORSE_CODE_DICT[char])
+    output_list.append(MORSE_CODE_DICT[char]) # Adds the value of the corresponding key to the output string
+    # ['-...', '..', '-.', '--.', '..-', '...', '/', '...', '.--.', '---', '..', '-.', '--.', '..-', '...'] = bingus spoingus
 
-print(output_string)
+delimiter = " "
+output_string = delimiter.join(output_list) # Puts a space between list elements and joins them as a string
+
+print(output_string) # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
