@@ -1,4 +1,4 @@
-from colorama import Style
+from colorama import Style, Fore
 import pandas as pd
 
 MORSE_CODE_DICT = {
@@ -16,7 +16,7 @@ MORSE_CODE_DICT = {
     '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
 }
 
-input_string = input("Enter the text you would like to convert: ") # bingus spoingus
+input_string = input(f"Enter the text you would like to convert: {Style.BRIGHT + Fore.GREEN}") # bingus spoingus
 
 INPUT_STRING = input_string.upper() # Converts the input string to uppercase so we don't run into errors w/ lowercase characters
 
@@ -29,4 +29,4 @@ for char in INPUT_STRING:
 delimiter = " "
 output_string = delimiter.join(output_list) # Puts a space between list elements and joins them as a string
 
-print(output_string) # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
+print(f"{Style.RESET_ALL}--> {Style.BRIGHT + Fore.GREEN}{output_string}{Style.RESET_ALL}") # -... .. -. --. ..- ... / ... .--. --- .. -. --. ..- ... much easier to read without the ' ' and ,
